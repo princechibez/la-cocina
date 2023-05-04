@@ -5,9 +5,8 @@ import Navbar from '../../Components/Navbar/Navbar'
 
 const Landing = () => {
   return (
-    <div>
+    <div className='landing'>
         <Hero />
-        <Navbar />
     </div>
   )
 }

@@ -1,5 +1,42 @@
 @import '../../App.scss';
 
 header{
-    
+    position: relative;
+    width: $width;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5em;
+    font-family: $font;
+    font-size: $text;
+
+    nav{
+        .link{
+            color: $white;
+            margin: 0 0.3em;
+            font-size: $text;
+            text-decoration: none;
+
+            &:hover{
+                color: $accent;
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    header{
+        menu{
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    header{
+        .desktop{
+            display: none;
+        }
+    }
 }

@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/open-sans');
+@import url('https://fonts.cdnfonts.com/css/turkish-times-new-roman');
+
 *,
 *::before,
 *::after{
@@ -11,6 +14,23 @@ $height : 100vh;
 $width : 100%;
 $wk-height: 100em;
 $wk-width: 100em;
+
+$white: #fefefe;
+$black: #0e0e0e;
+$main: #da0a0a;
+$accent: #FBCD08;
+
+$text: 1em;
+$large-text: 2em;
+$extra-large-text: 4em;
+
+$radius: 50%;
+$small-radius: 0.5em;
+
+$font: 'Open Sans', sans-serif;
+$header-font: 'Turkish Times New Roman', sans-serif;
+
+
 
 .App{
   height: $height;

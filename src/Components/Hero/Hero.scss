@@ -1,5 +1,9 @@
 @import '../../App.scss';
 
 .hero{
-    
+    position: relative;
+    height: $height;
+    width: $width;
+    background: url('../../assets/herobg.svg') no-repeat center;
+    background-size: cover;
 }
