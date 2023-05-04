@@ -16,7 +16,7 @@ const Navbar = () => {
 
         <label htmlFor="">
             <input type="search" name="search" id="search" placeholder='Search for Recipes'/>
-            <button><i class='fa-solid fa-magnifying-glass'></i></button>
+            <button><i class='fa-solid fa-magnifying-glass fa-2x'></i></button>
         </label>
 
         <nav className='desktop'>
@@ -27,18 +27,21 @@ const Navbar = () => {
             <Link to='/' className='link'>Contact Us</Link>
         </nav>
 
+        <Link to='/signup' className='link sign'> Sign Up</Link>
+
         <menu>
             <button onClick={handleClick}>
-                <i class={`fa-solid fa-${!toggleMobileMenu ? 'bars' : 'times'} fa-2x`}></i>
+                <i class={`fa-solid fa-${!toggleMobileMenu ? 'bars' : 'times'} fa-3x`}></i>
             </button>
 
             { toggleMobileMenu && (   
-                <nav>
+                <nav className={`animate__animated animate__${toggleMobileMenu ? 'fadeInRight' : 'fadeOutRight'}`}>
                     <Link to='/' className='link'>Home</Link>
                     <Link to='/' className='link'>Recipes</Link>
                     <Link to='/' className='link'>Blog</Link>
                     <Link to='/' className='link'>About Us</Link>
                     <Link to='/' className='link'>Contact Us</Link>
+                    <Link to='/signup' className='link sign'>Sign Up</Link>
                 </nav>
             )}
         </menu>

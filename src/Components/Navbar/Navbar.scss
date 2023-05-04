@@ -10,6 +10,33 @@ header{
     font-family: $font;
     font-size: $text;
 
+    label{
+        position: relative;
+        width: calc($wk-width * 0.2);
+        
+        input{
+            position: relative;
+            width: 100%;
+            font-size: $text;
+            padding: .5em;
+            text-align: center;
+            border-radius: $small-radius;
+            border: none;
+            outline: none;
+            font-family: $font;
+        }
+        button{
+            position: absolute;
+            top: 12%;
+            left: 2%;
+            background: none;
+            outline: none;
+            border: none;
+            color: $main;
+            cursor: pointer;
+        }
+    }
+
     nav{
         .link{
             color: $white;
@@ -19,6 +46,46 @@ header{
 
             &:hover{
                 color: $accent;
+            }
+        }
+    }
+
+    .sign{
+        color: $main
+    }
+
+    menu{
+        position: absolute;
+        width: $width;
+        height: $height;
+        top: 0;
+        right: 0;
+
+        button{
+            position: absolute;
+            z-index: 99;
+            top: 1%;
+            right: 3%;
+        }
+
+        nav{
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            // gap: 2em;
+            height: $height;
+            width: 90%;
+            padding: 0 1em;
+            background: $main;
+            z-index: 11;
+            font-family: $font;
+            font-size: $text;
+
+            .link{
+                margin-top: 5em;
+                border-bottom: 0.01em solid $white;
             }
         }
     }
