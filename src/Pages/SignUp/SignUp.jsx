@@ -54,7 +54,7 @@ const SignUp = () => {
                 </label>
 
                 <label htmlFor="">
-                    <input type="password" name="password" id="password" placeholder='Your password' value={formstate.password} onChange={handleInputChange}/>
+                    <input type={toggleVisibility ? 'text' : 'password'} name="password" id="password" placeholder='Your password' value={formstate.password} onChange={handleInputChange}/>
                     <i class='fa-solid fa-lock fa-2x'></i>
                     <button type='button' onClick={handleClick}>
                         <i class={`fa-solid fa-${ toggleVisibility ? 'eye' : 'eye-slash'}`}></i>
