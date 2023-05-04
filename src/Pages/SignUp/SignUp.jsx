@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './SignUp.scss'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import logo from '../../assets/logo-a.svg'
 import signup from '../../assets/signup.svg'
 import deco from '../../assets/deco.svg'
@@ -20,6 +22,68 @@ const SignUp = () => {
         setFormState(prevState => ({ ...prevState, [name] : value}))
     }
 
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleInputFocus = () => {
+        setIsFocused(true);
+    };
+    
+    const handleInputBlur = () => {
+        setIsFocused(false);
+    };
+    
+    const checkPassword = () => {
+        let info = [];
+        const password = formstate.password;
+        if (password.length < 8) {
+          info.push('Password must be more than 8 characters long');
+        }
+        if (!password.match(/[A-Z]/)) {
+          info.push('Password must contain a capital letter');
+        }
+        if (!password.match(/[!@#$%^&*(),.?":{}|<>]/)) {
+          info.push('Password must contain a special character');
+        }
+        if (!password.match(/[0-9]/)) {
+          info.push('Password must contain a number');
+        }
+        return info;
+    };
+      
+    
+    const info = checkPassword();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formstate),
+        };
+    
+        try {
+          const response = await fetch('https://lacocina-api.onrender.com/api/v1/signup', requestOptions);
+          const data = await response.json();
+          console.log(data);
+          if (response.ok) {
+            // Success
+            toast.success('You have signed up successfully!');
+          } else if (response.status === 409) {
+            // Email already used
+            toast.error('The email is already used. Please use a different one.');
+          } else if (response.status === 400) {
+            // Invalid input
+            toast.error('This email already exists, use another one');
+          } else {
+            // Other errors
+            toast.error('An error occurred. Please try again later.');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+    };
+
     function handleClick(){
         setToggleVisibility(!toggleVisibility)
     }
@@ -32,7 +96,7 @@ const SignUp = () => {
             <img src={deco} alt="" id='two'/>
         </div>
 
-        <form action="">
+        <form onSubmit={handleSubmit}>
                 <h1>Create an account</h1>
 
                 <div className="socials">
@@ -54,7 +118,21 @@ const SignUp = () => {
                 </label>
 
                 <label htmlFor="">
-                    <input type={toggleVisibility ? 'text' : 'password'} name="password" id="password" placeholder='Your password' value={formstate.password} onChange={handleInputChange}/>
+                    <input type={toggleVisibility ? 'text' : 'password'} 
+                        name="password" 
+                        id="password" 
+                        placeholder='Your password' 
+                        value={formstate.password} 
+                        onChange={handleInputChange}
+                        onFocus={handleInputFocus}
+                        onBlur={handleInputBlur}/>
+                        {isFocused && info.length > 0 && (
+                            <div className="password-info">
+                            {info.map((i) => (
+                                <div key={i}>{i}</div>
+                            ))}
+                            </div>
+                        )}
                     <i class='fa-solid fa-lock fa-2x'></i>
                     <button type='button' onClick={handleClick}>
                         <i class={`fa-solid fa-${ toggleVisibility ? 'eye' : 'eye-slash'}`}></i>

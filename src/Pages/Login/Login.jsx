@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import '../SignUp/SignUp.scss'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import logo from '../../assets/logo-a.svg'
 import login from '../../assets/login.svg'
 import log from '../../assets/log.svg'
@@ -57,6 +59,36 @@ const Login = () => {
         setFormState(prevState => ({ ...prevState, [name] : value}))
     }
 
+    const handleSubmit = e => {
+        e.preventDefault()
+        fetch('https://lacocina-api.onrender.com/api/v1/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formstate)
+        })
+        .then(response => {
+            if (response.ok) {
+                // The login was successful
+                toast.success('Login successful');
+              } else if (response.status === 400) {
+                // Invalid email or password
+                toast.error('Invalid email or password');
+              } else if (response.status === 401) {
+                // Password doesn't match the email
+                toast.error("Password doesn't match the email");
+              } else {
+                // The login failed for some other reason
+                toast.error('Login failed');
+              }
+        })
+        .catch(error => {
+          console.error('Error logging in:', error)
+          toast.error('Error logging in');
+        })
+    }
+
     function handleClick(){
         setToggleVisibility(!toggleVisibility)
     }
@@ -69,7 +101,7 @@ const Login = () => {
             <img src={deco} alt="" id='two'/>
         </div>
 
-        <form action="">
+        <form onSubmit={handleSubmit}>
                 <h1>Welcome Back!</h1>
 
                 <div className="socials">

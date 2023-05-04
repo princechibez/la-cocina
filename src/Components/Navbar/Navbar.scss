@@ -11,6 +11,7 @@ header{
     font-family: $font;
     font-size: $text;
     background: $black;
+    z-index: 11;
 
     label{
         position: relative;
@@ -68,6 +69,10 @@ header{
             z-index: 99;
             top: 1%;
             right: 3%;
+            background: none;
+            outline: none;
+            border: none;
+            color: $white;
         }
 
         nav{
@@ -80,7 +85,7 @@ header{
             height: $height;
             width: 90%;
             padding: 0 1em;
-            background: $main;
+            background: $black;
             z-index: 11;
             font-family: $font;
             font-size: $text;
@@ -104,6 +109,11 @@ header{
 
 @media screen and (max-width: 1020px) {
     header{
+
+        label{
+            position: absolute;
+            left: 35%;
+        }
         .sign{
             display: none;
         }

@@ -131,6 +131,13 @@
                 color: $gray;
             }
 
+            .password-info{
+                position: absolute;
+                width: 100%;
+                background: $white;
+                color: $main;
+            }
+
             button{
                 position: absolute;
                 bottom: 30%;
