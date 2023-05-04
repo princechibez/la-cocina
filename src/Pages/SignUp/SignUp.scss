@@ -1,5 +1,213 @@
 @import '../../App.scss';
 
-.sign{
-    
+.signup{
+    position: relative;
+    width: $width;
+    height: $height;
+    // overflow: hidden;
+
+    #logo{
+        margin: 1em;
+    }
+
+    .container{
+        position: relative;
+        width: $width;
+        height: calc($height * 0.8);
+        z-index: 1;
+
+        #one, #two{
+            position: absolute;
+        }
+
+        #one{
+            right: 30%;
+        }
+
+        #two{
+            bottom: 0;
+        }
+    }
+
+    form{
+        position: absolute;
+        top: 8em;
+        left: 15em;
+        height: calc($wk-height * 0.3);
+        width: calc($wk-width * 0.3);
+        background: $white;
+        box-shadow: 0.02em 0.02em 0.6em rgba($black, 0.1),
+                    0.02em 0.02em 0.6em rgba($black, 0.1),
+                    0.02em 0.02em 0.6em rgba($black, 0.1),
+                    0.02em 0.02em 0.6em rgba($black, 0.1);
+        border-radius: $small-radius;
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        font-family: $font;
+        font-size: $text;
+        gap: 1em;
+        z-index: 11;
+
+        h1{
+            text-align: center;
+            color: $dark-red;
+        }
+
+        .socials{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            button{
+                position: relative;
+                margin: .5em;
+                text-align: center;
+                padding: .5em;
+                outline: none;
+                background: none;
+                border: none;
+                border-bottom: 0.02em solid $dark-red;
+                cursor: pointer;
+                border-radius: $small-radius;
+
+                &:hover{
+                    background: rgba($black, 0.2);
+                }
+
+                img{
+                    position: absolute;
+                    top: 5%;
+                    left: 0;
+                }
+            }
+        }
+
+        span{
+            position: relative;
+            text-align: center;
+
+            &::before,
+            &::after{
+                content: "";
+                position: absolute;
+                top: 50%;
+                height: 0.1em;
+                width: 40%;
+                background: $gray;
+            }
+
+            &::before{
+                left: 0;
+            }
+            &::after{
+                right: 0;
+            }
+        }
+
+        label{
+            position: relative;
+            width: 100%;
+            margin: 1em 0;
+
+            input{
+                // position: absolute;
+                width: 100%;
+                font-family: $font;
+                font-size: $text;
+                padding: 0 2.2em;
+                border: none;
+                outline: none;
+                border-bottom: 0.02em solid $gray;
+
+            }
+            i{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                color: $gray;
+            }
+
+            button{
+                position: absolute;
+                bottom: 30%;
+                right: 10%;
+            }
+        }
+
+        #submit{
+            width: 60%;
+            padding: .5em 0;
+            align-self: center;
+            border-radius: $small-radius;
+            background: $main;
+            outline: none;
+            border: none;
+            color: $white;
+            font-size: $text;
+            cursor: pointer;
+
+            &:hover{
+                background: $dark-red;
+            }
+        }
+
+        p{
+            text-align: center;
+            color: $gray;
+
+            #link{
+                color: $main;
+                text-decoration: none;
+            }
+        }
+    }
+
+    #bg{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+@media screen and (width: 1024px) {
+    .signup{
+
+        form{
+            top: 5em;
+            left: 5em;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .signup{
+        position: relative;
+
+        #logo{
+            position: fixed;
+            z-index: 2;
+        }
+
+        .container{
+            display: none;
+        }
+
+        form{
+            top: 15%;
+            left: 5%;
+            width: 90%;
+            height: calc($wk-height * 0.35);
+            align-self: center;
+        }
+
+        #bg{
+            position: absolute;
+            width: 100%;
+            height: $height;
+            object-fit: cover;
+        }
+    }
 }

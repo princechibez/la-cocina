@@ -1,14 +1,27 @@
-import React, { useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import './Navbar.scss'
+import 'animate.css/animate.min.css'
 import logo from '../../assets/logo.svg'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     const [toggleMobileMenu, setToggleMobileMenu] = useState(false)
+    const menuRef = useRef(null)
+
+    useEffect(() => {
+        if (toggleMobileMenu) {
+          menuRef.current.classList.add('animate__fadeInRight')
+          menuRef.current.classList.remove('animate__fadeOutRight')
+        } else {
+          menuRef.current.classList.add('animate__fadeOutRight')
+          menuRef.current.classList.remove('animate__fadeInRight')
+        }
+    }, [toggleMobileMenu])
 
     function handleClick() {
-        setToggleMobileMenu(!toggleMobileMenu)
-    }
+        setToggleMobileMenu(prevToggleMobileMenu => !prevToggleMobileMenu);
+    }      
+      
 
   return (
     <header>
@@ -34,16 +47,13 @@ const Navbar = () => {
                 <i class={`fa-solid fa-${!toggleMobileMenu ? 'bars' : 'times'} fa-3x`}></i>
             </button>
 
-            { toggleMobileMenu && (   
-                <nav className={`animate__animated animate__${toggleMobileMenu ? 'fadeInRight' : 'fadeOutRight'}`}>
-                    <Link to='/' className='link'>Home</Link>
-                    <Link to='/' className='link'>Recipes</Link>
-                    <Link to='/' className='link'>Blog</Link>
-                    <Link to='/' className='link'>About Us</Link>
-                    <Link to='/' className='link'>Contact Us</Link>
-                    <Link to='/signup' className='link sign'>Sign Up</Link>
-                </nav>
-            )}
+            <nav className="animate__animated" ref={menuRef}>                    <Link to='/' className='link'>Home</Link>
+                <Link to='/' className='link'>Recipes</Link>
+                <Link to='/' className='link'>Blog</Link>
+                <Link to='/' className='link'>About Us</Link>
+                <Link to='/' className='link'>Contact Us</Link>
+                <Link to='/signup' className='link'>Sign Up</Link>
+            </nav>
         </menu>
     </header>
   )

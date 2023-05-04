@@ -102,6 +102,9 @@ header{
 
 @media screen and (max-width: 1020px) {
     header{
+        .sign{
+            display: none;
+        }
         .desktop{
             display: none;
         }

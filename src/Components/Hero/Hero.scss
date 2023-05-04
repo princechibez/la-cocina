@@ -79,3 +79,14 @@
         }
     }
 }
+@media screen and (max-width: 380px) {
+    .hero{
+
+        span{
+
+            h1{
+                font-size: calc($large-text * 1.5);
+            }
+        }
+    }
+}
