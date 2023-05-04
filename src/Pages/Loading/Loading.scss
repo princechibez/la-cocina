@@ -1,0 +1,35 @@
+@import '../../App.scss';
+
+.loading{
+    position: relative;
+    height: $height;
+    width: $width;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $black;
+    z-index: 999;
+
+    img {
+        animation: flip-vertical 2s ease-in-out infinite;
+    }
+
+    @keyframes flip-vertical {
+        0% {
+          transform: scaleX(1);
+        }
+        50% {
+          transform: scaleX(-1);
+        }
+        100% {
+          transform: scaleX(1);
+        }
+    }
+
+    span{
+        font-family: $font;
+        font-size: $large-text;
+        color: $white;
+    }
+}
