@@ -7,19 +7,9 @@ import RecipeCard from "../../Components/RecipeCard";
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [isPending, setIsPending] = useState(true);
-  const [fillteredRecipe, setFillteredRecipe] = useState({
-    popular: [],
-    breakfast: [],
-    lunch: [],
-    dinner: [],
-    desserts: [],
-    snacks: [],
-    beverages: [],
-  });
 
   useEffect(() => {
     fetchAllRecipes();
-    console.log(recipes)
   }, []);
 
   const fetchAllRecipes = async () => {
@@ -100,7 +90,7 @@ const Recipes = () => {
             </p>
           </div>
 
-          <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
+          <div className="py-6 my-6 grid lg:grid-cols-4 md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
                 .filter((elem) => elem.rate >= 3)
@@ -122,7 +112,7 @@ const Recipes = () => {
             </p>
           </div>
 
-          <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
+          <div className="py-6 my-6 grid lg:grid-cols-4 md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
                 .filter((elem) => elem.dishType.includes("breakfast"))
@@ -144,7 +134,7 @@ const Recipes = () => {
             </p>
           </div>
 
-          <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
+          <div className="py-6 my-6 grid lg:grid-cols-4 md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
                 .filter((elem) => elem.dishType.includes("lunch"))
@@ -166,7 +156,7 @@ const Recipes = () => {
             </p>
           </div>
 
-          <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
+          <div className="py-6 my-6 grid lg:grid-cols-4 gap-10 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
                 .filter((elem) => elem.dishType.includes("dinner"))
@@ -189,7 +179,7 @@ const Recipes = () => {
             </p>
           </div>
 
-          <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
+          <div className="py-6 my-6 grid lg:grid-cols-4 md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
                 .filter(
@@ -213,7 +203,7 @@ const Recipes = () => {
             </p>
           </div>
 
-          <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
+          <div className="py-6 my-6 grid lg:grid-cols-4 md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
                 .filter((elem) => elem.dishType.includes("beverages"))
