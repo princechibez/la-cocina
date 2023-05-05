@@ -5,6 +5,7 @@ import Landing from './Pages/Landing/Landing'
 import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/Login/Login'
 import Loading from './Pages/Loading/Loading'
+import Recipes from './Pages/Recipes/Recipes'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,6 +28,7 @@ function App() {
             <Route path='/' element={<Landing />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/recipes' element={<Recipes />} />
           </Routes>
         </Router>
       )}

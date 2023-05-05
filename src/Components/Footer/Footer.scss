@@ -1,0 +1,131 @@
+@import '../../App.scss';
+
+footer{
+    position: relative;
+    width: $width;
+    background: $black;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1/1;
+    padding: 4em;
+    gap: 1em;
+
+    section{
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1/1;
+        justify-content: space-between;
+        font-family: $font;
+
+        aside{
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+
+            label{
+                p{
+                    color: $accent;
+                    font-size: $text;
+                }
+
+                input{
+                    border: none;
+                    outline: none;
+                    font-size: $text;
+                    font-family: $font;
+                    margin: 1em 0;
+                    padding: .5em;
+                }
+
+                #email{
+                    width: calc($wk-width * 0.2);
+                    border-top-left-radius: $small-radius;
+                    border-bottom-left-radius: $small-radius;
+                }
+
+                #submit{
+                    background: $main;
+                    color: $white;
+                    padding: .5em 2em;
+                    border-top-right-radius: $small-radius;
+                    border-bottom-right-radius: $small-radius;
+                    cursor: pointer;
+
+                    &:hover{
+                        background: $dark-red;
+                    }
+                }
+            }
+
+            .socials{
+                position: relative;
+                a{
+                    color: $gray;
+                    margin: 1em;
+
+                    &:hover{
+                        color: $accent;
+                    }
+                }
+            }
+        }
+
+        menu{
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            flex: 1/1;
+            gap: 4em;
+
+            nav{
+                display: flex;
+                flex-direction: column;
+                font-family: $font;
+                font-size: $text;
+
+                .link{
+                    color: $white;
+                    text-decoration: none;
+                    margin: .3em 0;
+
+                    &:hover{
+                        color: $accent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    footer{
+        position: relative;
+        padding: 2em;
+
+        section{
+            position: relative;
+            width: 80%;
+            gap: 1em;
+
+            label{
+                position: relative;
+                width: 100%;
+
+                #email, #submit{
+                    border: none;
+                    border-radius: $small-radius;
+                    width: 100%;
+                    margin: .2em 0;
+                }
+            }
+        }
+
+        menu{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

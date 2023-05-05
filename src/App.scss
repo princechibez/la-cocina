@@ -38,3 +38,14 @@ $header-font: 'Turkish Times New Roman', sans-serif;
   height: $height;
   width: $width;
 }
+
+::-webkit-scrollbar{
+  width: 0em;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  position: absolute;
+  width: .2em;
+  background: $main;
+}
