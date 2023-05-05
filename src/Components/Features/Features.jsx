@@ -22,7 +22,6 @@ const Features = () => {
       });
   }, []);
 
-  console.log(recipes)
   if (isLoading) {
     return <div>Loading recipes...</div>;
   }

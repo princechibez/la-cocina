@@ -20,7 +20,7 @@
     .container{
         width: 100%;
         display: flex;
-        gap: 24px;
+        gap: 8px;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
@@ -34,9 +34,17 @@
         margin: 30px;
         text-align: left;
     }
+
+    // @media (max-width: 600px) {
+    //     .flexItem {
+    //         width: 70vw;
+    //     }
+    // }
     .flexItem img {
         height: 70%;
         width: 100%;
+        // background-size: cover;
+        // background-position: center;
     }
     .flexItem p, h4 {
         padding-left: 8px;
