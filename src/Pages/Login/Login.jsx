@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import '../SignUp/SignUp.scss'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import logo from '../../assets/logoa.svg'
+import logo from '../../assets/Logoa.svg'
 import login from '../../assets/login.svg'
 import log from '../../assets/log.svg'
 import deco from '../../assets/deco.svg'
