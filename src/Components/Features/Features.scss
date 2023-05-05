@@ -1,0 +1,37 @@
+@import '../../App.scss';
+
+.features{
+    position: relative;
+    width: $width;
+    display: flex;
+    flex-direction: column;
+    padding: 4em;
+    font-family: $font;
+
+    h1, p{
+        align-self: center;
+        text-align: center;
+    }
+
+    h1{
+        color: $main;
+    }
+
+    .container{
+        width: 100%;
+
+    }
+
+    .link{
+        align-self: center;
+        padding: .5em 1.7em;
+        background: $main;
+        color: $white;
+        text-decoration: none;
+        border-radius: $small-radius;
+
+        &:hover{
+            color: $dark-red;
+        }
+    }
+}
