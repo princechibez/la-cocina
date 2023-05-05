@@ -5,7 +5,7 @@
     width: $width;
     display: flex;
     flex-direction: column;
-    padding: 4em;
+    padding: 2em;
     font-family: $font;
 
     h1, p{
@@ -18,29 +18,60 @@
     }
 
     .container{
+        position: relative;
         width: 100%;
         display: flex;
         gap: 2em;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-    }
-    
-    .flexItem {
-        border-radius: 12px;
-        box-shadow: 0.01em 0.01em 0.08em rgba($black, 0.5);
-        height: calc($wk-height * 0.2);
-        width: calc($wk-width * 0.2);
-        text-align: left;
-        font-family: $font;
-
-        img {
-            height: 70%;
-            width: 100%;
-        }
-        p, h4 {
-            padding-left: .8em;
+        
+        .flexItem {
+            position: relative;
+            border-radius: $small-radius;
+            box-shadow: 0.01em 0.01em 0.8em rgba($black, 0.5);
+            height: calc($wk-height * 0.2);
+            width: calc($wk-width * 0.2);
             text-align: left;
+            font-family: $font;
+            margin: 2em 0;
+            text-decoration: none;
+            
+            img {
+                position: relative;
+                border-top-right-radius: $small-radius;
+                border-top-left-radius: $small-radius;
+                height: 70%;
+                width: 100%;
+            }
+            p, h4 {
+                text-align: center;
+                text-transform: capitalize;
+            }
+
+            p{
+                color: $accent;
+            }
+
+            h4{
+                color: $black;
+            }
+            #p{
+                color: $black;
+            }
+
+            #rate{
+                position: absolute;
+                top: 2%;
+                right: 2%;
+                background: $main;
+                border: none;
+                outline: none;
+                color: $white;
+                padding: .3em;
+                border-radius: $radius;
+                cursor: pointer;
+            }
         }
     }
     
@@ -53,7 +84,7 @@
         border-radius: $small-radius;
 
         &:hover{
-            color: $dark-red;
+            background: $dark-red;
         }
     }
 }

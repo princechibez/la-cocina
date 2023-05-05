@@ -1,0 +1,59 @@
+@import '../../App.scss';
+
+.recipe{
+    position: relative;
+    width: $width;
+    font-family: $font;
+
+    .titles{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 1em;
+        flex-wrap: wrap;
+        flex: 1/1;
+
+        aside{
+            border-right: 0.01em solid $black;
+            padding: 0 .2em;
+        }
+    }
+
+    .btn{
+        width: calc($wk-width * 0.2);
+        padding: .7em 0;
+        outline: none;
+        margin: 2em;
+        font-family: $font;
+        font-size: $font;
+        border-radius: $small-radius;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    #all{
+        background: none;
+        color: $main;
+        border: 0.03em solid $main;
+
+        &:hover{
+            background: $main;
+            color: $white;
+        }
+    }
+    #saved{
+        background: $accent;
+        color: $black;
+        border: none;
+
+        &:hover{
+            border: 0.03em solid $accent;
+            background: none;
+        }
+    }
+
+    .container{
+        
+    }
+}

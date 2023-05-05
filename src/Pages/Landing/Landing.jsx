@@ -5,6 +5,7 @@ import Navbar from '../../Components/Navbar/Navbar'
 import Loading from '../Loading/Loading'
 import Footer from '../../Components/Footer/Footer'
 import Features from '../../Components/Features/Features'
+import Categories from '../../Components/Categories/Categories'
 
 const Landing = () => {
   return (
@@ -12,6 +13,7 @@ const Landing = () => {
         {/* <Navbar /> */}
         <Hero />
         <Features />
+        <Categories />
         {/* <Loading /> */}
         <Footer />
     </div>
