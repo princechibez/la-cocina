@@ -14,7 +14,8 @@ function App() {
     // Simulate a 3 second delay for demonstration purposes
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 3000);
+      // }, 3000);
+    }, 0);
 
     return () => clearTimeout(timer);
   }, []);

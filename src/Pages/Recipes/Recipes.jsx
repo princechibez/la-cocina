@@ -1,8 +1,37 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import RecipeCard from "../../Components/RecipeCard";
 
 const Recipes = () => {
+  const [recipes, setRecipes] = useState([]);
+  const [isPending, setIsPending] = useState(true);
+  const [fillteredRecipe, setFillteredRecipe] = useState({
+    popular: [],
+    breakfast: [],
+    lunch: [],
+    dinner: [],
+    desserts: [],
+    snacks: [],
+    beverages: [],
+  });
+
+  useEffect(() => {
+    fetchAllRecipes();
+    console.log(recipes)
+  }, []);
+
+  const fetchAllRecipes = async () => {
+    try {
+      const response = await axios("https://lacocina-api.onrender.com/api/v1/recipe/getAllRecipes");
+      setRecipes(response.data.data);
+      setIsPending(false);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -72,32 +101,17 @@ const Recipes = () => {
           </div>
 
           <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
-            <RecipeCard
-              title="Recipes by Main Ingredient"
-              description=" Whether you prefer chicken, beef, seafood or veggies, you’ll love our delicious recipes
-          starring your favorites"
-            />
-            <RecipeCard
-              title="Recipes Ready in Under 30 Minutes"
-              description="From Dan Dan Noodles to savory seafood dishes, these quick and easy recipes are perfect for busy days"
-            />
-            <RecipeCard
-              title="Best Vegan Recipes"
-              description="Add the power of plants to your plate with delicious, nutritious recipes, filled with veggies and plant‑based favorites"
-            />
-            <RecipeCard
-              title="Recipes by Main Ingredient"
-              description=" Whether you prefer chicken, beef, seafood or veggies, you’ll love our delicious recipes
-          starring your favorites"
-            />
-            <RecipeCard
-              title="Recipes Ready in Under 30 Minutes"
-              description="From Dan Dan Noodles to savory seafood dishes, these quick and easy recipes are perfect for busy days"
-            />
-            <RecipeCard
-              title="Best Vegan Recipes"
-              description="Add the power of plants to your plate with delicious, nutritious recipes, filled with veggies and plant‑based favorites"
-            />
+            {!isPending &&
+              recipes
+                .filter((elem) => elem.rate >= 3)
+                .map((recipe, index) => (
+                  <RecipeCard
+                    key={index}
+                    title={recipe.title}
+                    imgUrl={recipe.image}
+                    description={recipe?.description || ""}
+                  />
+                ))}
           </div>
         </div>
         <div className="my-2 py-6">
@@ -109,19 +123,17 @@ const Recipes = () => {
           </div>
 
           <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
-            <RecipeCard
-              title="Recipes by Main Ingredient"
-              description=" Whether you prefer chicken, beef, seafood or veggies, you’ll love our delicious recipes
-          starring your favorites"
-            />
-            <RecipeCard
-              title="Recipes Ready in Under 30 Minutes"
-              description="From Dan Dan Noodles to savory seafood dishes, these quick and easy recipes are perfect for busy days"
-            />
-            <RecipeCard
-              title="Best Vegan Recipes"
-              description="Add the power of plants to your plate with delicious, nutritious recipes, filled with veggies and plant‑based favorites"
-            />
+            {!isPending &&
+              recipes
+                .filter((elem) => elem.dishType.includes("breakfast"))
+                .map((recipe, index) => (
+                  <RecipeCard
+                    key={index}
+                    title={recipe.title}
+                    imgUrl={recipe.image}
+                    description={recipe?.description || ""}
+                  />
+                ))}
           </div>
         </div>
         <div className="my-2 py-6">
@@ -133,24 +145,17 @@ const Recipes = () => {
           </div>
 
           <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
-            <RecipeCard
-              title="Recipes by Main Ingredient"
-              description=" Whether you prefer chicken, beef, seafood or veggies, you’ll love our delicious recipes
-          starring your favorites"
-            />
-            <RecipeCard
-              title="Recipes Ready in Under 30 Minutes"
-              description="From Dan Dan Noodles to savory seafood dishes, these quick and easy recipes are perfect for busy days"
-            />
-            <RecipeCard
-              title="Best Vegan Recipes"
-              description="Add the power of plants to your plate with delicious, nutritious recipes, filled with veggies and plant‑based favorites"
-            />
-            <RecipeCard
-              title="Recipes by Main Ingredient"
-              description=" Whether you prefer chicken, beef, seafood or veggies, you’ll love our delicious recipes
-          starring your favorites"
-            />
+            {!isPending &&
+              recipes
+                .filter((elem) => elem.dishType.includes("lunch"))
+                .map((recipe, index) => (
+                  <RecipeCard
+                    key={index}
+                    title={recipe.title}
+                    imgUrl={recipe.image}
+                    description={recipe?.description || ""}
+                  />
+                ))}
           </div>
         </div>
         <div className="my-2 py-6">
@@ -162,26 +167,20 @@ const Recipes = () => {
           </div>
 
           <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
-            <RecipeCard
-              title="Recipes by Main Ingredient"
-              description=" Whether you prefer chicken, beef, seafood or veggies, you’ll love our delicious recipes
-          starring your favorites"
-            />
-            <RecipeCard
-              title="Recipes Ready in Under 30 Minutes"
-              description="From Dan Dan Noodles to savory seafood dishes, these quick and easy recipes are perfect for busy days"
-            />
-            <RecipeCard
-              title="Best Vegan Recipes"
-              description="Add the power of plants to your plate with delicious, nutritious recipes, filled with veggies and plant‑based favorites"
-            />
-            <RecipeCard
-              title="Recipes by Main Ingredient"
-              description=" Whether you prefer chicken, beef, seafood or veggies, you’ll love our delicious recipes
-          starring your favorites"
-            />
+            {!isPending &&
+              recipes
+                .filter((elem) => elem.dishType.includes("dinner"))
+                .map((recipe, index) => (
+                  <RecipeCard
+                    key={index}
+                    title={recipe.title}
+                    imgUrl={recipe.image}
+                    description={recipe?.description || ""}
+                  />
+                ))}
           </div>
-        </div>{" "}
+        </div>
+
         <div className="my-2 py-6">
           <div>
             <h3 className="font-[700] text-[24px] leading-[33px]">Dessert & Snacks</h3>
@@ -191,19 +190,19 @@ const Recipes = () => {
           </div>
 
           <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
-            <RecipeCard
-              title="Recipes by Main Ingredient"
-              description=" Whether you prefer chicken, beef, seafood or veggies, you’ll love our delicious recipes
-          starring your favorites"
-            />
-            <RecipeCard
-              title="Recipes Ready in Under 30 Minutes"
-              description="From Dan Dan Noodles to savory seafood dishes, these quick and easy recipes are perfect for busy days"
-            />
-            <RecipeCard
-              title="Best Vegan Recipes"
-              description="Add the power of plants to your plate with delicious, nutritious recipes, filled with veggies and plant‑based favorites"
-            />
+            {!isPending &&
+              recipes
+                .filter(
+                  (elem) => elem.dishType.includes("desserts") || elem.dishType.includes("snacks")
+                )
+                .map((recipe, index) => (
+                  <RecipeCard
+                    key={index}
+                    title={recipe.title}
+                    imgUrl={recipe.image}
+                    description={recipe?.description || ""}
+                  />
+                ))}
           </div>
         </div>
         <div className="my-2 py-6">
@@ -215,19 +214,17 @@ const Recipes = () => {
           </div>
 
           <div className="py-6 my-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
-            <RecipeCard
-              title="Recipes by Main Ingredient"
-              description=" Whether you prefer chicken, beef, seafood or veggies, you’ll love our delicious recipes
-          starring your favorites"
-            />
-            <RecipeCard
-              title="Recipes Ready in Under 30 Minutes"
-              description="From Dan Dan Noodles to savory seafood dishes, these quick and easy recipes are perfect for busy days"
-            />
-            <RecipeCard
-              title="Best Vegan Recipes"
-              description="Add the power of plants to your plate with delicious, nutritious recipes, filled with veggies and plant‑based favorites"
-            />
+            {!isPending &&
+              recipes
+                .filter((elem) => elem.dishType.includes("beverages"))
+                .map((recipe, index) => (
+                  <RecipeCard
+                    key={index}
+                    title={recipe.title}
+                    imgUrl={recipe.image}
+                    description={recipe?.description || ""}
+                  />
+                ))}
           </div>
         </div>
       </div>

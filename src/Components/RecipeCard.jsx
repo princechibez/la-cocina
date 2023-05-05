@@ -1,12 +1,12 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import cardImage from "../assets/dish1.png";
 
-const RecipeCard = ({ title, description }) => {
+const RecipeCard = ({ title, description, imgUrl }) => {
   return (
-    <div className="max-w-[400px] rounded-[10px] p-1 pb-6" style={cardStyle}>
+    <div className="max-w-[400px] rounded-[10px] p-1 pb-4" style={cardStyle}>
       <div>
         <div className="relative">
-          <img src={cardImage} alt="alt" className="rounded-lg -z-30" />
+          <img src={imgUrl} alt="alt" className="rounded-lg -z-30" />
           <div className="absolute w-[36px] h-[36px] right-[8%] top-[16px] bg-[#DA0A0A] rounded-[100px] border-0">
             <div className="absolute w-[20px] h-[20px]" style={heartWrapperStyle}>
               <div className="absolute flex justify-center items-center">
