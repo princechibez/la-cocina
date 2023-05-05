@@ -10,29 +10,30 @@ const Navbar = () => {
 
     const location = useLocation();
 
-    useEffect(() => {
-        if (toggleMobileMenu) {
-          menuRef.current.classList.add('animate__fadeInRight')
-          menuRef.current.classList.remove('animate__fadeOutRight')
-        } else {
-          menuRef.current.classList.add('animate__fadeOutRight')
-          menuRef.current.classList.remove('animate__fadeInRight')
-        }
-    }, [toggleMobileMenu])
+  useEffect(() => {
+    if (toggleMobileMenu) {
+      menuRef.current.classList.add("animate__fadeInRight");
+      menuRef.current.classList.remove("animate__fadeOutRight");
+    } else {
+      menuRef.current.classList.add("animate__fadeOutRight");
+      menuRef.current.classList.remove("animate__fadeInRight");
+    }
+  }, [toggleMobileMenu]);
 
-    function handleClick() {
-        setToggleMobileMenu(prevToggleMobileMenu => !prevToggleMobileMenu);
-    }      
-      
+  function handleClick() {
+    setToggleMobileMenu((prevToggleMobileMenu) => !prevToggleMobileMenu);
+  }
 
   return (
     <header>
         <Link to='/' id='img'><img src={logo} alt="" /></Link>
 
-        <label htmlFor="">
-            <input type="search" name="search" id="search" placeholder='Search for Recipes'/>
-            <button><i class='fa-solid fa-magnifying-glass fa-2x'></i></button>
-        </label>
+      <label htmlFor="">
+        <input type="search" name="search" id="search" placeholder="Search for Recipes" />
+        <button>
+          <i className="fa-solid fa-magnifying-glass fa-2x"></i>
+        </button>
+      </label>
 
         <nav className='desktop'>
             <Link to='/' className={`link ${location.pathname === '/' ? 'active' : ''}`}>Home</Link>
@@ -43,12 +44,15 @@ const Navbar = () => {
 
         </nav>
 
-        <Link to='/signup' className='link sign'> Sign Up</Link>
+      <Link to="/signup" className="link sign">
+        {" "}
+        Sign Up
+      </Link>
 
-        <menu>
-            <button onClick={handleClick}>
-                <i class={`fa-solid fa-${!toggleMobileMenu ? 'bars' : 'times'} fa-3x`}></i>
-            </button>
+      <menu>
+        <button onClick={handleClick}>
+          <i className={`fa-solid fa-${!toggleMobileMenu ? "bars" : "times"} fa-3x`}></i>
+        </button>
 
             <nav className="animate__animated" ref={menuRef}>                    <Link to='/' className='link'>Home</Link>
                 <Link to='/recipes' className='link'>Recipes</Link>
@@ -59,7 +63,7 @@ const Navbar = () => {
             </nav>
         </menu>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
