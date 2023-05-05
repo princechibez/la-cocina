@@ -53,7 +53,7 @@ const Navbar = () => {
             <nav className="animate__animated" ref={menuRef}>                    <Link to='/' className='link'>Home</Link>
                 <Link to='/recipes' className='link'>Recipes</Link>
                 <Link to='/' className='link'>Blog</Link>
-                <Link to='/' className='link'>About Us</Link>
+                <Link to='/about' className='link'>About Us</Link>
                 <Link to='/' className='link'>Contact Us</Link>
                 <Link to='/signup' className='link'>Sign Up</Link>
             </nav>
