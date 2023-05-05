@@ -17,6 +17,7 @@ const Recipes = () => {
       const response = await axios("https://lacocina-api.onrender.com/api/v1/recipe/getAllRecipes");
       setRecipes(response.data.data);
       setIsPending(false);
+      console.log(response.data.data);
     } catch (error) {
       console.error(error.message);
     }
@@ -100,6 +101,7 @@ const Recipes = () => {
                     title={recipe.title}
                     imgUrl={recipe.image}
                     description={recipe?.description || ""}
+                    id={recipe._id}
                   />
                 ))}
           </div>
