@@ -46,7 +46,7 @@ const Login = () => {
             }, []);
             return nextIndex;
           });
-        }, 10000);
+        }, 20000);
       
         return () => clearInterval(intervalId);
     }, [logs]);
