@@ -13,6 +13,10 @@ header{
     background: $black;
     z-index: 11;
 
+    #img{
+        z-index: 99;
+    }
+
     label{
         position: relative;
         width: calc($wk-width * 0.2);
@@ -46,6 +50,10 @@ header{
             margin: 0 0.3em;
             font-size: $text;
             text-decoration: none;
+
+            &.active{
+                color: $accent;
+            }
 
             &:hover{
                 color: $accent;
@@ -118,6 +126,14 @@ header{
             display: none;
         }
         .desktop{
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header{
+        label{
             display: none;
         }
     }
