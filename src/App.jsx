@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './App.scss'
-import Landing from './Pages/Landing/Landing'
-import SignUp from './Pages/SignUp/SignUp'
-import Login from './Pages/Login/Login'
-import Loading from './Pages/Loading/Loading'
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.scss";
+import Landing from "./Pages/Landing/Landing";
+import SignUp from "./Pages/SignUp/SignUp";
+import Login from "./Pages/Login/Login";
+import Loading from "./Pages/Loading/Loading";
+import Recipes from "./Pages/Recipes";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -13,7 +14,8 @@ function App() {
     // Simulate a 3 second delay for demonstration purposes
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 3000);
+    }, 1000);
+    // }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -24,14 +26,15 @@ function App() {
       {loaded && (
         <Router>
           <Routes>
-            <Route path='/' element={<Landing />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/login' element={<Login />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/recipes" element={<Recipes />} />
           </Routes>
         </Router>
       )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

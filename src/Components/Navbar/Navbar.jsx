@@ -1,62 +1,92 @@
-import React, { useRef, useState, useEffect } from 'react'
-import './Navbar.scss'
-import 'animate.css/animate.min.css'
-import logo from '../../assets/logo.svg'
-import { Link } from 'react-router-dom'
+import React, { useRef, useState, useEffect } from "react";
+import "./Navbar.scss";
+import "animate.css/animate.min.css";
+import logo from "../../assets/logo.svg";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    const [toggleMobileMenu, setToggleMobileMenu] = useState(false)
-    const menuRef = useRef(null)
+  const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
+  const menuRef = useRef(null);
 
-    useEffect(() => {
-        if (toggleMobileMenu) {
-          menuRef.current.classList.add('animate__fadeInRight')
-          menuRef.current.classList.remove('animate__fadeOutRight')
-        } else {
-          menuRef.current.classList.add('animate__fadeOutRight')
-          menuRef.current.classList.remove('animate__fadeInRight')
-        }
-    }, [toggleMobileMenu])
+  useEffect(() => {
+    if (toggleMobileMenu) {
+      menuRef.current.classList.add("animate__fadeInRight");
+      menuRef.current.classList.remove("animate__fadeOutRight");
+    } else {
+      menuRef.current.classList.add("animate__fadeOutRight");
+      menuRef.current.classList.remove("animate__fadeInRight");
+    }
+  }, [toggleMobileMenu]);
 
-    function handleClick() {
-        setToggleMobileMenu(prevToggleMobileMenu => !prevToggleMobileMenu);
-    }      
-      
+  function handleClick() {
+    setToggleMobileMenu((prevToggleMobileMenu) => !prevToggleMobileMenu);
+  }
 
   return (
     <header>
-        <Link to='/'><img src={logo} alt="" /></Link>
+      <Link to="/">
+        <img src={logo} alt="" />
+      </Link>
 
-        <label htmlFor="">
-            <input type="search" name="search" id="search" placeholder='Search for Recipes'/>
-            <button><i class='fa-solid fa-magnifying-glass fa-2x'></i></button>
-        </label>
+      <label htmlFor="">
+        <input type="search" name="search" id="search" placeholder="Search for Recipes" />
+        <button>
+          <i className="fa-solid fa-magnifying-glass fa-2x"></i>
+        </button>
+      </label>
 
-        <nav className='desktop'>
-            <Link to='/' className='link'>Home</Link>
-            <Link to='/' className='link'>Recipes</Link>
-            <Link to='/' className='link'>Blog</Link>
-            <Link to='/' className='link'>About Us</Link>
-            <Link to='/' className='link'>Contact Us</Link>
+      <nav className="desktop">
+        <Link to="/" className="link">
+          Home
+        </Link>
+        <Link to="/" className="link">
+          Recipes
+        </Link>
+        <Link to="/" className="link">
+          Blog
+        </Link>
+        <Link to="/" className="link">
+          About Us
+        </Link>
+        <Link to="/" className="link">
+          Contact Us
+        </Link>
+      </nav>
+
+      <Link to="/signup" className="link sign">
+        {" "}
+        Sign Up
+      </Link>
+
+      <menu>
+        <button onClick={handleClick}>
+          <i className={`fa-solid fa-${!toggleMobileMenu ? "bars" : "times"} fa-3x`}></i>
+        </button>
+
+        <nav className="animate__animated" ref={menuRef}>
+          {" "}
+          <Link to="/" className="link">
+            Home
+          </Link>
+          <Link to="/" className="link">
+            Recipes
+          </Link>
+          <Link to="/" className="link">
+            Blog
+          </Link>
+          <Link to="/" className="link">
+            About Us
+          </Link>
+          <Link to="/" className="link">
+            Contact Us
+          </Link>
+          <Link to="/signup" className="link">
+            Sign Up
+          </Link>
         </nav>
-
-        <Link to='/signup' className='link sign'> Sign Up</Link>
-
-        <menu>
-            <button onClick={handleClick}>
-                <i class={`fa-solid fa-${!toggleMobileMenu ? 'bars' : 'times'} fa-3x`}></i>
-            </button>
-
-            <nav className="animate__animated" ref={menuRef}>                    <Link to='/' className='link'>Home</Link>
-                <Link to='/' className='link'>Recipes</Link>
-                <Link to='/' className='link'>Blog</Link>
-                <Link to='/' className='link'>About Us</Link>
-                <Link to='/' className='link'>Contact Us</Link>
-                <Link to='/signup' className='link'>Sign Up</Link>
-            </nav>
-        </menu>
+      </menu>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
