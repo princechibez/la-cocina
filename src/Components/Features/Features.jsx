@@ -49,7 +49,7 @@ const Features = () => {
         </div>
 
 
-      <Link to='/recipe' className='link'>Get cooking</Link>
+      <Link to='/recipes' className='link'>Get cooking</Link>
     </div>
   );
 };
