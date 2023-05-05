@@ -1,0 +1,25 @@
+@import '../../App.scss';
+
+.about{
+    position: relative;
+    width: $width;
+    overflow: hidden;
+
+    .container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        padding: 2em;
+        font-family: $font;
+
+        .box{
+            color: $black;
+            font-family: $font;
+
+            p{
+                font-size: $text;
+            }
+        }
+    }
+}
