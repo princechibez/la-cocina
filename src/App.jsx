@@ -6,6 +6,7 @@ import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/Login/Login'
 import Loading from './Pages/Loading/Loading'
 import Recipes from './Pages/Recipes/Recipes'
+import About from './Pages/About/About'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -29,6 +30,7 @@ function App() {
             <Route path='/signup' element={<SignUp />} />
             <Route path='/login' element={<Login />} />
             <Route path='/recipes' element={<Recipes />} />
+            <Route path='/about' element={<About />} />
           </Routes>
         </Router>
       )}
