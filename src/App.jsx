@@ -5,7 +5,7 @@ import Landing from "./Pages/Landing/Landing";
 import SignUp from "./Pages/SignUp/SignUp";
 import Login from "./Pages/Login/Login";
 import Loading from "./Pages/Loading/Loading";
-import Recipes from "./Pages/Recipes";
+import Recipes from "./Pages/Recipes/Recipes";
 
 function App() {
   const [loaded, setLoaded] = useState(false);

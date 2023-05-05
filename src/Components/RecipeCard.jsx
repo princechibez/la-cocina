@@ -7,7 +7,7 @@ const RecipeCard = ({ title, description }) => {
       <div>
         <div className="relative">
           <img src={cardImage} alt="alt" className="rounded-lg -z-30" />
-          <div className="absolute w-[36px] h-[36px] left-[340px] top-[16px] bg-[#DA0A0A] rounded-[100px] border-0">
+          <div className="absolute w-[36px] h-[36px] right-[8%] top-[16px] bg-[#DA0A0A] rounded-[100px] border-0">
             <div className="absolute w-[20px] h-[20px]" style={heartWrapperStyle}>
               <div className="absolute flex justify-center items-center">
                 <AiOutlineHeart className="text-white text-2xl font-bold" />
