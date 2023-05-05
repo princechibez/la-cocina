@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import './Navbar.scss'
 import 'animate.css/animate.min.css'
-import logo from '../../assets/logo.svg'
+import logo from '../../assets/Logo.svg'
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
