@@ -3,7 +3,7 @@ import '../SignUp/SignUp.scss'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../../assets/Logoa.svg'
-import login from '../../assets/login.svg'
+import login from '../../assets/login.png'
 import log from '../../assets/log.svg'
 import deco from '../../assets/deco.svg'
 import google from '../../assets/google-icon.svg'
