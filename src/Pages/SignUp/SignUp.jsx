@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./SignUp.scss";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/Logoa.svg";
 import signup from "../../assets/signup.svg";
 import deco from "../../assets/deco.svg";
 import google from "../../assets/google-icon.svg";
 import facebook from "../../assets/facebook-icon.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formstate, setFormState] = useState({
     email: "",
     password: "",
@@ -61,28 +62,43 @@ const SignUp = () => {
       body: JSON.stringify(formstate),
     };
 
+    const id = toast.loading("Wait a few moment, we are registering you...");
     try {
       const response = await fetch(
         "https://lacocina-api.onrender.com/api/v1/signup",
         requestOptions
       );
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       if (response.ok) {
         // Success
-        toast.success("You have signed up successfully!");
+        toast.update(id, {
+          render: "You have signed up successfully!",
+          type: "success",
+          isLoading: false,
+          autoClose: 2000,
+        });
+        // toast.success("You have signed up successfully!");
       } else if (response.status === 409) {
         // Email already used
         toast.error("The email is already used. Please use a different one.");
       } else if (response.status === 400) {
         // Invalid input
-        toast.error("This email already exists, use another one");
+        // toast.error("This email already exists, use another one");
+        return toast.update(id, {
+          render: "This email already exists, use another one",
+          type: "error",
+          isLoading: false,
+          autoClose: 2000,
+        });
       } else {
         // Other errors
         toast.error("An error occurred. Please try again later.");
       }
+      navigate("/recipes");
     } catch (error) {
-      console.error(error);
+      // toast.update(id, {render: err.response.data, type: "error", isLoading: false, autoClose: 2000 });
+      // console.error(error);
     }
   };
 
@@ -92,6 +108,7 @@ const SignUp = () => {
 
   return (
     <div className="signup">
+      <ToastContainer />
       <Link to="/">
         <img src={logo} alt="" id="logo" />
       </Link>
@@ -148,7 +165,11 @@ const SignUp = () => {
           )}
           <i className="fa-solid fa-lock fa-2x"></i>
           <button type="button" onClick={handleClick}>
-            <i className={`fa-solid fa-${toggleVisibility ? "eye" : "eye-slash"}`}></i>
+            <i
+              className={`fa-solid fa-${
+                toggleVisibility ? "eye" : "eye-slash"
+              }`}
+            ></i>
           </button>
         </label>
 

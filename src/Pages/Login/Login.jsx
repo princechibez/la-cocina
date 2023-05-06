@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../SignUp/SignUp.scss";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/Logoa.svg";
 import login from "../../assets/login.svg";
@@ -12,6 +12,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "animate.css";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [formstate, setFormState] = useState({
     email: "",
     password: "",
@@ -19,7 +21,6 @@ const Login = () => {
 
   const [currentLogIndex, setCurrentLogIndex] = useState(0);
   const bgImgRef = useRef();
-  const navigate = useNavigate()
 
   const logs = [
     {
@@ -61,6 +62,8 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const id = toast.loading("Loggin in...");
     fetch("https://lacocina-api.onrender.com/api/v1/login", {
       method: "POST",
       headers: {
@@ -71,10 +74,22 @@ const Login = () => {
       .then((response) => {
         if (response.ok) {
           // The login was successful
-          toast.success("Login successful");
+          toast.update(id, {
+            render: "Login successful",
+            type: "success",
+            isLoading: false,
+            autoClose: 2000,
+          });
+          // toast.success("Login successful");
         } else if (response.status === 400) {
           // Invalid email or password
-          toast.error("Invalid email or password");
+          // toast.error("Invalid email or password");
+          return toast.update(id, {
+            render: "Invalid email or password",
+            type: "error",
+            isLoading: false,
+            autoClose: 2000,
+          });
         } else if (response.status === 401) {
           // Password doesn't match the email
           toast.error("Password doesn't match the email");
@@ -82,11 +97,11 @@ const Login = () => {
           // The login failed for some other reason
           toast.error("Login failed");
         }
-        navigate('/recipes')
+        navigate("/recipes");
       })
       .catch((error) => {
-        console.error("Error logging in:", error);
-        toast.error("Error logging in");
+        // console.error("Error logging in:", error);
+        // toast.error("Error logging in");
       });
   };
 
@@ -96,6 +111,7 @@ const Login = () => {
 
   return (
     <div className="signup">
+      <ToastContainer />
       <Link to="/">
         <img src={logo} alt="" id="logo" />
       </Link>
@@ -143,7 +159,11 @@ const Login = () => {
           />
           <i className="fa-solid fa-lock fa-2x"></i>
           <button type="button" onClick={handleClick}>
-            <i className={`fa-solid fa-${toggleVisibility ? "eye" : "eye-slash"}`}></i>
+            <i
+              className={`fa-solid fa-${
+                toggleVisibility ? "eye" : "eye-slash"
+              }`}
+            ></i>
           </button>
         </label>
 

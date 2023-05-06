@@ -1,31 +1,51 @@
-import {React, useState } from "react";
+import { React, useState } from "react";
 import "./Footer.scss";
-import 'axios'
+import "axios";
 import logo from "../../assets/Logo.svg";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Footer = () => {
+  const [email, setEmail] = useState(" ");
 
-    const [email, setEmail] = useState(" ")
-    console.log(email)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log(email)
-    
-        try {
-          const response = await fetch(
-            `https://lacocina-api.onrender.com/api/v1/email-subscription/${email}`,
-            {method: "POST"}
-          );
-          const data = await response.json();
-          console.log(data);
-        } catch (error) {
-          console.error(error);
-        }
-      };
+    try {
+      const id = toast.loading("Subscribing...");
+      const response = await fetch(
+        `https://lacocina-api.onrender.com/api/v1/email-subscription/${email}`,
+        { method: "POST" }
+      );
+      const data = await response.json();
+      if(!data.success) {
+        return toast.update(id, {
+          render: "Subscription failed",
+          type: "error",
+          isLoading: false,
+          autoClose: 2000,
+        });
+      }
+      toast.update(id, {
+        render: data.message + " Subscription Successful, check your email",
+        type: "success",
+        isLoading: false,
+        autoClose: 5000,
+      });
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+      return toast.update(id, {
+        render: "Subscription failed",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+      });
+    }
+  };
   return (
     <footer>
+      <ToastContainer />
       <Link to="/">
         <img src={logo} alt="" />
       </Link>
@@ -33,8 +53,20 @@ const Footer = () => {
         <aside>
           <label htmlFor="">
             <p>Subscribe to our newsletter`</p>
-            <input type="email" name="email" id="email" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} />
-            <input type="submit" value="Subscribe" id="submit" onClick={handleSubmit} />
+            <input
+              required
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email Address"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="submit"
+              value="Subscribe"
+              id="submit"
+              onClick={handleSubmit}
+            />
           </label>
 
           <div className="socials">

@@ -11,7 +11,7 @@ const RecipePage = () => {
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    axios.get(`https://lacocina-api.onrender.com/api/v1/recipe/getAllRecipes/${recipeId}`)
+    axios.get(`https://lacocina-api.onrender.com/api/v1/recipe/${recipeId}`)
       .then(response => {
         setRecipe(response.data.data);
         setIsLoading(false);
@@ -42,14 +42,12 @@ const RecipePage = () => {
       <Navbar />
       
       <div className="container">
-
         <h1>{recipe.title}</h1>
         <img src={recipe.image} alt={recipe.title} />
         <p>Dish Type: {recipe.dishType}</p>
         <p>Ready in {recipe.readyInMinutes} minutes</p>
         <p>Instructions: {recipe.instructions}</p>
         {/* Render other recipe details as needed */}
-
       </div>
 
       <Footer />
