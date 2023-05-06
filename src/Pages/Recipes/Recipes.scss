@@ -4,6 +4,7 @@
     position: relative;
     width: $width;
     font-family: $font;
+    overflow: hidden;
 
     .titles{
         position: relative;
@@ -54,6 +55,6 @@
     }
 
     .container{
-        
+
     }
 }

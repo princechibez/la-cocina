@@ -1,0 +1,10 @@
+@import '../../App.scss';
+
+.recipePage{
+    position: relative;
+    width: $width;
+    
+    .container{
+        width: 100%;
+    }
+}

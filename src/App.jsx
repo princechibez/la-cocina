@@ -7,6 +7,7 @@ import Login from './Pages/Login/Login'
 import Loading from './Pages/Loading/Loading'
 import Recipes from './Pages/Recipes/Recipes'
 import About from './Pages/About/About'
+import RecipePage from './Pages/RecipePage/RecipePage'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -16,7 +17,7 @@ function App() {
     const timer = setTimeout(() => {
       setLoaded(true);
       // }, 3000);
-    }, 0);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -32,6 +33,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/recipes' element={<Recipes />} />
             <Route path='/about' element={<About />} />
+            <Route path='/recipepage/:recipeId' element={<RecipePage />} />
           </Routes>
         </Router>
       )}

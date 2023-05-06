@@ -12,12 +12,10 @@ const Features = () => {
   useEffect(() => {
     axios.get('https://lacocina-api.onrender.com/api/v1/recipe/getAllRecipes')
       .then(response => {
-        // console.log(response.data);
         setRecipes(response.data.data);
         setIsLoading(false);
       })
       .catch(error => {
-        // console.error(error);
         setError(error);
         setIsLoading(false);
       });
@@ -51,9 +49,12 @@ const Features = () => {
 
       <div className='container'>
         {Array.isArray(displayedRecipes) && displayedRecipes.map(recipe => {
-          // console.log(recipe); // added console.log statement
           return (
-            <Link className='flexItem' key={recipe.id}>
+            <Link
+              className='flexItem'
+              key={recipe._id}
+              to={`/recipepage/${recipe._id}`}
+            >
               <img src={recipe.image} alt={recipe.title} />
               <button type='button' id='rate'><i className='fa-solid fa-heart'></i></button>
               <p>{recipe.dishType}</p>

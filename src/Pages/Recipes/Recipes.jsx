@@ -76,7 +76,7 @@ const Recipes = () => {
           <p>Find a new favorite dish for your table with our collection of recipes.</p>
 
           <div className="content">
-            <Link to={`/recipes/`} className="rep">
+            <Link to={`/recipes/:recipe.Id`} className="rep">
             </Link>
           </div>
       </div>
