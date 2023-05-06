@@ -113,6 +113,7 @@ const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [isPending, setIsPending] = useState(true);
 
+
   useEffect(() => {
     fetchAllRecipes();
   }, []);
