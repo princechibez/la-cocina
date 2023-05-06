@@ -8,7 +8,7 @@ import log from "../../assets/log.svg";
 import deco from "../../assets/deco.svg";
 import google from "../../assets/google-icon.svg";
 import facebook from "../../assets/facebook-icon.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "animate.css";
 
 const Login = () => {
@@ -19,6 +19,7 @@ const Login = () => {
 
   const [currentLogIndex, setCurrentLogIndex] = useState(0);
   const bgImgRef = useRef();
+  const navigate = useNavigate()
 
   const logs = [
     {
@@ -81,6 +82,7 @@ const Login = () => {
           // The login failed for some other reason
           toast.error("Login failed");
         }
+        navigate('/recipes')
       })
       .catch((error) => {
         console.error("Error logging in:", error);
