@@ -9,7 +9,7 @@ const Features = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    axios.get('https://lacocina-api.onrender.com/api/v1/recipe/getAllRecipes')
+    axios.get('https://lacocina-api.onrender.com/api/v1/recipe')
       .then(response => {
         // console.log(response.data);
         setRecipes(response.data.data);

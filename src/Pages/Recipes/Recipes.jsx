@@ -14,7 +14,7 @@ const Recipes = () => {
 
   const fetchAllRecipes = async () => {
     try {
-      const response = await axios("https://lacocina-api.onrender.com/api/v1/recipe/getAllRecipes");
+      const response = await axios("https://lacocina-api.onrender.com/api/v1/recipe");
       setRecipes(response.data.data);
       setIsPending(false);
       console.log(response.data.data);
@@ -117,7 +117,7 @@ const Recipes = () => {
           <div className="py-6 my-6 grid lg:grid-cols-4 md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
-                .filter((elem) => elem.dishType.includes("breakfast"))
+                // .filter((elem) => elem.dishType.includes("breakfast"))
                 .map((recipe, index) => (
                   <RecipeCard
                     key={index}
@@ -139,7 +139,7 @@ const Recipes = () => {
           <div className="py-6 my-6 grid lg:grid-cols-4 md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
-                .filter((elem) => elem.dishType.includes("lunch"))
+                // .filter((elem) => elem.dishType.includes("lunch"))
                 .map((recipe, index) => (
                   <RecipeCard
                     key={index}
@@ -161,7 +161,7 @@ const Recipes = () => {
           <div className="py-6 my-6 grid lg:grid-cols-4 gap-10 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
-                .filter((elem) => elem.dishType.includes("dinner"))
+                // .filter((elem) => elem.dishType.includes("dinner"))
                 .map((recipe, index) => (
                   <RecipeCard
                     key={index}
@@ -184,9 +184,9 @@ const Recipes = () => {
           <div className="py-6 my-6 grid lg:grid-cols-4 md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
-                .filter(
-                  (elem) => elem.dishType.includes("desserts") || elem.dishType.includes("snacks")
-                )
+                // .filter(
+                //   (elem) => elem.dishType.includes("desserts") || elem.dishType.includes("snacks")
+                // )
                 .map((recipe, index) => (
                   <RecipeCard
                     key={index}
@@ -208,7 +208,7 @@ const Recipes = () => {
           <div className="py-6 my-6 grid lg:grid-cols-4 md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1">
             {!isPending &&
               recipes
-                .filter((elem) => elem.dishType.includes("beverages"))
+                // .filter((elem) => elem.dishType.includes("beverages"))
                 .map((recipe, index) => (
                   <RecipeCard
                     key={index}
