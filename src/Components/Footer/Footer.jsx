@@ -1,7 +1,7 @@
 import {React, useState } from "react";
 import "./Footer.scss";
 import 'axios'
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/Logo.svg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
